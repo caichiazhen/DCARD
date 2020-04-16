@@ -11,7 +11,7 @@ driver.get(url)
 
 #在搜尋的輸入框內輸入文字
 inputElement = driver.find_element_by_tag_name('input')
-inputElement.send_keys('Python')
+inputElement.send_keys('軟體工程師')
 
 #點擊「搜尋按鈕」
 driver.find_element_by_css_selector('button.sc-1ehu1w3-2').click()
@@ -23,8 +23,8 @@ soup = bs(html, 'html.parser')
 
 #獲得文章看板、作者、時間
 meta_datas = []
-for x in soup.find_all('span', {'class':'sc-6oxm01-2 kkIdia'}):
-    meta_datas.append(x.test.strip())
+for x in soup.find_all('span', {'class':'sc-6oxm01-2 hiTIMq'}):
+    meta_datas.append(x.text.strip())
 print(meta_datas)
 
 #從meta_datas裡面跳出「看板」
@@ -42,22 +42,22 @@ for i in range(len(meta_datas)):
 
 
 #獲得文章標題
-# titles = []
-# for x in soup.find_all('h2',{'class' : 'sc-1v1d5rx-3 hQqKVz'}):
-#     titles.append(x.text)
-# print(titles)
+titles = []
+for x in soup.find_all('h2',{'class' : 'sc-1v1d5rx-3 eihOFJ'}):
+    titles.append(x.text)
+print(titles)
 
-#獲得文章標題
-# hrefs = []
-# for x in soup.find_all('a', {'class': 'sc-1v1d5rx-4 bMrsjN'}):
-#     hrefs.append(x['href'])
+#獲得文章連結
+hrefs = []
+for x in soup.find_all('a', {'class': 'sc-1v1d5rx-4 gCVegi'}):
+    hrefs.append(x['href'])
 
 #從相對連結及url組成絕對連結
-# links = []
-# for href in hrefs:
-#     links.append(urljoin(url, href))
-# print(links)
+links = []
+for href in hrefs:
+    links.append(urljoin(url, href))
+print(links)
 
 #印出「看板、標題、連結」
-# for i in range(len(forums)):
-#     print(forums[i], titles[i], links[i])
+for i in range(len(forums)):
+    print(forums[i], titles[i], links[i])
