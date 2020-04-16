@@ -11,7 +11,7 @@ driver.get(url)
 
 #在搜尋的輸入框內輸入文字
 inputElement = driver.find_element_by_tag_name('input')
-inputElement.send_keys('軟體工程師')
+inputElement.send_keys('tensorflow')
 
 #點擊「搜尋按鈕」
 driver.find_element_by_css_selector('button.sc-1ehu1w3-2').click()
@@ -32,11 +32,11 @@ forums = []
 author = []
 times = []
 for i in range(len(meta_datas)):
-    if i % 3 == 0:
+    if i % 3 == 0:#看板
         forums.append(meta_datas[i])
-    if i % 3 == 1:
+    if i % 3 == 1:#作者
         author.append(meta_datas[i])
-    if i % 3 == 2:
+    if i % 3 == 2:#時間
         times.append(meta_datas[i])
 
 
@@ -60,4 +60,5 @@ print(links)
 
 #印出「看板、標題、連結」
 for i in range(len(forums)):
-    print(forums[i], titles[i], links[i])
+    if forums[i] =="軟體工程師":
+        print(forums[i], titles[i], links[i])
